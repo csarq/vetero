@@ -1,7 +1,3 @@
-h1 {
-  color: mediumvioletred;
-}
-
 .container {
   max-width: 800px;
   margin: 30px auto;
@@ -9,4 +5,41 @@ h1 {
   border: 6px solid #ff7bac;
   border-radius: 10px;
   box-shadow: rgb(0, 0, 0) 6px 6px;
+}
+
+.title,
+.language,
+h1,
+h2,
+.temp-today,
+.forecast-temp,
+.select-temp {
+  font-family: t26-carbon,
+    monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+form .search::placeholder,
+footer {
+  font-family: logic-monoscript,
+    mono;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.today-date,
+.weather-description {
+  font-family: logic-monoscript,
+    mono;
+  font-weight: 400;
+  font-style: normal;
+}
+
+form .search,
+.day {
+  font-family: logic-monoscript,
+    mono;
+  font-weight: 500;
+  font-style: normal;
 }
