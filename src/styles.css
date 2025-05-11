@@ -43,3 +43,14 @@ form .search,
   font-weight: 500;
   font-style: normal;
 }
+
+.corner-top-left {
+  width: 20px;
+  height: auto;
+}
+
+.corner-bottom-right {
+  width: 20px;
+  height: auto;
+  transform: rotate(180deg);
+}
