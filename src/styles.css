@@ -1,3 +1,12 @@
 h1 {
   color: mediumvioletred;
 }
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  border: 6px solid #ff7bac;
+  border-radius: 10px;
+  box-shadow: rgb(0, 0, 0) 6px 6px;
+}
