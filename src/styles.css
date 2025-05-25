@@ -19,6 +19,18 @@ main {
   margin-bottom: 30px;
 }
 
+.title-bar-left {
+  display: flex;
+}
+
+.title {
+  margin-right: 80px;
+}
+
+.language {
+  color: #5b6386;
+}
+
 .title,
 .language,
 h1,
@@ -138,8 +150,14 @@ h2 {
 }
 
 .temp-today {
-  font-size: 40px;
+  font-size: 60px;
 }
+
+#temp-today-val {
+  font-size: 60px;
+}
+
+#temp-today-unit {}
 
 .next-5-days {
   display: flex;
@@ -164,4 +182,5 @@ footer {
     mono;
   font-weight: 300;
   font-style: normal;
+  text-align: center;
 }
