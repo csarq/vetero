@@ -7,6 +7,11 @@
   box-shadow: rgb(0, 0, 0) 8px 8px;
 }
 
+header,
+main {
+  width: 100%;
+}
+
 .title-bar-container {
   display: flex;
   justify-content: space-between;
@@ -86,18 +91,25 @@ form .search,
   font-style: normal;
 }
 
+.city-name {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto 40px;
+}
 
-
-
-
-/* thicken strokes on corner to match border 6px */
 .corner-top-left {
   width: 20px;
   height: auto;
+  display: block;
+  margin-bottom: 40px;
 }
 
 .corner-bottom-right {
   width: 20px;
   height: auto;
   transform: rotate(180deg);
+  display: block;
+  margin-top: 40px;
 }
