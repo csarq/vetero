@@ -151,7 +151,15 @@ h2 {
 }
 
 .temp-today {
+  display: flex;
+  align-items: center;
   font-size: 60px;
+  height: fit-content
+}
+
+.temp-today img {
+  display: block;
+  margin-right: 20px;
 }
 
 #temp-today-val {
