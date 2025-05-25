@@ -11,9 +11,9 @@ function refreshWeather(response) {
   descriptionElement.innerHTML =
     response.data.condition.description.charAt(0).toUpperCase() +
     response.data.condition.description.slice(1);
-  humidityElement.innerHTML = response.data.temperature.humidity;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   const windspeed = response.data.wind.speed;
-  windspeedElement.innerHTML = Math.round(windspeed);
+  windspeedElement.innerHTML = Math.round(windspeed * 3.6);
   console.log(response.data);
 }
 

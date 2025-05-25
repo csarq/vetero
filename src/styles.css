@@ -138,7 +138,7 @@ form .search,
   font-size: 18px;
 }
 
-#humidity,
+#humidity-percentage,
 #windspeed,
 #windspeed-unit {
   color: #ff7bac;
