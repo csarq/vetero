@@ -75,8 +75,7 @@ footer {
   font-style: normal;
 }
 
-.today-date,
-.weather-description {
+.today-date {
   font-family: logic-monoscript,
     mono;
   font-weight: 400;
@@ -84,7 +83,8 @@ footer {
 }
 
 form .search,
-.day {
+.day,
+.weather-description {
   font-family: logic-monoscript,
     mono;
   font-weight: 500;
@@ -112,4 +112,30 @@ form .search,
   transform: rotate(180deg);
   display: block;
   margin-top: 40px;
+}
+
+.weather-today {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe5ee;
+  padding: 20px;
+}
+
+#humidity,
+#windspeed,
+#windspeed-unit {
+  color: #ff7bac;
+  font-weight: 700;
+}
+
+.temp-today {
+  font-size: 40px;
+}
+
+footer {
+  font-family: logic-monoscript,
+    mono;
+  font-weight: 300;
+  font-style: normal;
 }
