@@ -66,6 +66,7 @@ form {
   box-sizing: border-box;
   border-style: none;
   padding-left: 20px;
+  font-size: 16px;
 }
 
 .submit-button-svg {

@@ -1,11 +1,19 @@
 function refreshWeather(response) {
   const cityElement = document.querySelector("#city");
-
   const temperatureTodayElement = document.querySelector("#temp-today-val");
-  const temperature = response.data.temperature.current;
+  const descriptionElement = document.querySelector("#description");
+  const humidityElement = document.querySelector("#humidity-percentage");
+  const windspeedElement = document.querySelector("#windspeed");
 
   cityElement.innerHTML = response.data.city;
+  const temperature = response.data.temperature.current;
   temperatureTodayElement.innerHTML = Math.round(temperature);
+  descriptionElement.innerHTML =
+    response.data.condition.description.charAt(0).toUpperCase() +
+    response.data.condition.description.slice(1);
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  const windspeed = response.data.wind.speed;
+  windspeedElement.innerHTML = Math.round(windspeed);
   console.log(response.data);
 }
 
