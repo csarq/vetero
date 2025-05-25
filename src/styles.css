@@ -50,7 +50,7 @@ form {
   box-sizing: border-box;
 }
 
-.search-form {
+.form-inner-container {
   display: flex;
   width: 100%;
   align-items: center;
