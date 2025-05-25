@@ -4,6 +4,8 @@ function refreshWeather(response) {
   const descriptionElement = document.querySelector("#description");
   const humidityElement = document.querySelector("#humidity-percentage");
   const windspeedElement = document.querySelector("#windspeed");
+  const dateElement = document.querySelector("#today-date");
+  let date = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
   const temperature = response.data.temperature.current;
@@ -14,7 +16,64 @@ function refreshWeather(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   const windspeed = response.data.wind.speed;
   windspeedElement.innerHTML = Math.round(windspeed * 3.6);
+  dateElement.innerHTML = formatDate(date);
+
   console.log(response.data);
+}
+
+function formatDate(date) {
+  let dayNo = date.getDate();
+  let year = date.getFullYear();
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let month = months[date.getMonth()];
+  let suffix = getSuffix(dayNo);
+
+  return `${day}, ${dayNo}<sup>${suffix}</sup> ${month} ${year}`;
+}
+
+function getSuffix(dayNo) {
+  const number = dayNo.toString();
+  if (number.endsWith("11") || number.endsWith("12") || number.endsWith("13")) {
+    return "th";
+  }
+
+  const lastDigit = number.slice(-1);
+
+  if (lastDigit === "1") {
+    return "st";
+  } else if (lastDigit === "2") {
+    return "nd";
+  } else if (lastDigit === "3") {
+    return "rd";
+  } else {
+    return "th";
+  }
 }
 
 function searchCity(city) {
