@@ -1,3 +1,5 @@
+const apiKey = "c3ae07f646b904bce9d83oat69c5764d";
+
 function refreshWeather(response) {
   const cityElement = document.querySelector("#city");
   const temperatureTodayElement = document.querySelector("#temp-today-val");
@@ -79,8 +81,7 @@ function getSuffix(dayNo) {
   }
 }
 
-function searchCity(city) {
-  const apiKey = "c3ae07f646b904bce9d83oat69c5764d";
+function searchCity(city, apiKey) {
   const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
 }
@@ -88,10 +89,38 @@ function searchCity(city) {
 function handleSearchSubmit(event) {
   event.preventDefault();
   const searchInput = document.querySelector("#search-form-input");
-  searchCity(searchInput.value);
+  searchCity(searchInput.value, apiKey);
 }
 
 const searchformElement = document.querySelector("#search-form");
 searchformElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("London");
+
+function displayForecast() {
+  const fiveDayForecastElement = document.querySelector("#next-5-days");
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let forecastHTML = "";
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `        
+        <div class="day">
+          <p>${day}</p>
+          <div id="temp-icon">
+          </div>
+          <p class="forecast-temp">16 °C</p>
+        </div>`;
+  });
+  fiveDayForecastElement.innerHTML = forecastHTML;
+}
+displayForecast();
