@@ -1,3 +1,7 @@
+body {
+  min-width: 1050px;
+}
+
 .container {
   max-width: 1000px;
   margin: 30px auto;
@@ -78,6 +82,12 @@ form {
   flex-shrink: 0;
   box-sizing: border-box;
   cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.submit-button-svg:hover {
+  background-color: #b2446d;
+  transition: all 150ms ease-in-out;
 }
 
 form .search::placeholder,
@@ -166,20 +176,17 @@ h2 {
   font-size: 60px;
 }
 
-#temp-today-unit {}
-
 #next-5-days {
   display: flex;
   width: 100%;
   justify-content: space-between;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   font-size: 18px;
 }
 
 .day {
-  /* display: flex; */
   flex: 1;
 }
 
@@ -188,7 +195,6 @@ h2 {
 }
 
 .temp-icon img {
-  /* display: block; */
   width: 80px;
   height: auto;
 }
@@ -204,4 +210,25 @@ footer {
   font-weight: 300;
   font-style: normal;
   text-align: center;
+}
+
+
+a:link {
+  text-decoration: none;
+  color: #ff7bac
+}
+
+a:visited {
+  text-decoration: none;
+  color: #ff7bac
+}
+
+a:hover {
+  text-decoration: none;
+  color: #b2446d;
+}
+
+a:active {
+  text-decoration: none;
+  color: #ff7bac
 }
