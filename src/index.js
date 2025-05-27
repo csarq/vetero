@@ -1,5 +1,3 @@
-const apiKey = "c3ae07f646b904bce9d83oat69c5764d";
-
 function refreshWeather(response) {
   const cityElement = document.querySelector("#city");
   const temperatureTodayElement = document.querySelector("#temp-today-val");
@@ -22,8 +20,7 @@ function refreshWeather(response) {
   let date = new Date(response.data.time * 1000);
   dateElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}">`;
-
-  console.log(response.data);
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -81,7 +78,8 @@ function getSuffix(dayNo) {
   }
 }
 
-function searchCity(city, apiKey) {
+function searchCity(city) {
+  const apiKey = "c3ae07f646b904bce9d83oat69c5764d";
   const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
 }
@@ -89,7 +87,7 @@ function searchCity(city, apiKey) {
 function handleSearchSubmit(event) {
   event.preventDefault();
   const searchInput = document.querySelector("#search-form-input");
-  searchCity(searchInput.value, apiKey);
+  searchCity(searchInput.value);
 }
 
 const searchformElement = document.querySelector("#search-form");
@@ -97,8 +95,8 @@ searchformElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("London");
 
-function displayForecast() {
-  const fiveDayForecastElement = document.querySelector("#next-5-days");
+function formatDay(timestamp) {
+  const date = new Date(timestamp * 1000);
   const days = [
     "Sunday",
     "Monday",
@@ -108,19 +106,34 @@ function displayForecast() {
     "Friday",
     "Saturday",
   ];
+  return days[date.getDay()];
+}
 
+function getForecast(city) {
+  const apiKey = "c3ae07f646b904bce9d83oat69c5764d";
+  const apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `        
+
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `        
         <div class="day">
-          <p>${day}</p>
-          <div id="temp-icon">
+          <p>${formatDay(day.time)}</p>
+          <div class="temp-icon"> <img src="${day.condition.icon_url}" alt="${
+          day.condition.icon
+        }">
           </div>
-          <p class="forecast-temp">16 °C</p>
+          <p class="forecast-temp">${Math.round(day.temperature.day)} °C</p>
         </div>`;
+    }
   });
+  const fiveDayForecastElement = document.querySelector("#next-5-days");
+  console.log(forecastHTML);
   fiveDayForecastElement.innerHTML = forecastHTML;
 }
-displayForecast();
